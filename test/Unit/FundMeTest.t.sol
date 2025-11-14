@@ -131,7 +131,8 @@ contract FundMeTest is Test {
         for (
             uint160 i = startingFunderIndex; //1 to 10
             i < numberOfFunders + startingFunderIndex;
-             //1 to 10
+
+            //1 to 10
             i++
         ) {
             hoax(address(i), SEND_VALUE); //deal + prank = hoax
@@ -160,7 +161,8 @@ contract FundMeTest is Test {
         for (
             uint160 i = startingFunderIndex; //1 to 10
             i < numberOfFunders + startingFunderIndex;
-             //1 to 10
+
+            //1 to 10
             i++
         ) {
             hoax(address(i), SEND_VALUE); //deal + prank = hoax
