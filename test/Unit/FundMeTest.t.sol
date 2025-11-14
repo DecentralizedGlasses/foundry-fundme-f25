@@ -122,10 +122,7 @@ contract FundMeTest is Test {
         uint256 endingOwnerBalance = fundMe.getOwner().balance;
         uint256 endingFundMeBalance = address(fundMe).balance;
         assertEq(endingFundMeBalance, 0);
-        assertEq(
-            starttingOwnerBalance + starttingFundMeBalance,
-            endingOwnerBalance
-        );
+        assertEq(starttingOwnerBalance + starttingFundMeBalance, endingOwnerBalance);
     }
 
     function testWithdrawFromMultipleFunders() public funded {
@@ -133,7 +130,8 @@ contract FundMeTest is Test {
         uint160 startingFunderIndex = 1; //index 0 is taken by 'USER' from the funded modifier
         for (
             uint160 i = startingFunderIndex; //1 to 10
-            i < numberOfFunders + startingFunderIndex; //1 to 10
+            i < numberOfFunders + startingFunderIndex;
+             //1 to 10
             i++
         ) {
             hoax(address(i), SEND_VALUE); //deal + prank = hoax
@@ -149,12 +147,10 @@ contract FundMeTest is Test {
 
         assert(address(fundMe).balance == 0); //fundme balance is 0
         assert(
-            startingFundMeBalance + startingOwnerBalance ==
-                fundMe.getOwner().balance //owner balance after withdrawal
+            startingFundMeBalance + startingOwnerBalance == fundMe.getOwner().balance //owner balance after withdrawal
         );
         assert(
-            (numberOfFunders + 1) * SEND_VALUE ==
-                fundMe.getOwner().balance - startingOwnerBalance //total funders' contribution
+            (numberOfFunders + 1) * SEND_VALUE == fundMe.getOwner().balance - startingOwnerBalance //total funders' contribution
         );
     }
 
@@ -163,7 +159,8 @@ contract FundMeTest is Test {
         uint160 startingFunderIndex = 1; //index 0 is taken by 'USER' from the funded modifier
         for (
             uint160 i = startingFunderIndex; //1 to 10
-            i < numberOfFunders + startingFunderIndex; //1 to 10
+            i < numberOfFunders + startingFunderIndex;
+             //1 to 10
             i++
         ) {
             hoax(address(i), SEND_VALUE); //deal + prank = hoax
@@ -179,12 +176,10 @@ contract FundMeTest is Test {
 
         assert(address(fundMe).balance == 0); //fundme balance is 0
         assert(
-            startingFundMeBalance + startingOwnerBalance ==
-                fundMe.getOwner().balance //owner balance after withdrawal
+            startingFundMeBalance + startingOwnerBalance == fundMe.getOwner().balance //owner balance after withdrawal
         );
         assert(
-            (numberOfFunders + 1) * SEND_VALUE ==
-                fundMe.getOwner().balance - startingOwnerBalance //total funders' contribution
+            (numberOfFunders + 1) * SEND_VALUE == fundMe.getOwner().balance - startingOwnerBalance //total funders' contribution
         );
     }
 
